@@ -1,13 +1,4 @@
-#Common headers
-common_includes := $(call project-path-for,qcom-display)/libgralloc
-common_includes += $(call project-path-for,qcom-display)/liboverlay
-common_includes += $(call project-path-for,qcom-display)/libcopybit
-common_includes += $(call project-path-for,qcom-display)/libqdutils
-common_includes += $(call project-path-for,qcom-display)/libhwcomposer
-common_includes += $(call project-path-for,qcom-display)/libhdmi
-common_includes += $(call project-path-for,qcom-display)/libqservice
-
-common_header_export_path := qcom/display
+display_top := $(call my-dir)
 
 #Common libraries external to display HAL
 common_libs := liblog libutils libcutils libhardware
@@ -18,7 +9,6 @@ common_flags += -Wconversion -Wall -Werror -Wno-sign-conversion
 
 ifeq ($(TARGET_USES_POST_PROCESSING),true)
     common_flags     += -DUSES_POST_PROCESSING
-    common_includes  += $(TARGET_OUT_HEADERS)/pp/inc
 endif
 
 ifeq ($(ARCH_ARM_HAVE_NEON),true)
